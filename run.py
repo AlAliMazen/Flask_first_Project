@@ -1,5 +1,5 @@
 import os
-#import Falsk class and render_template
+#import Flask class and render_template
 from flask import Flask, render_template
 
 app=Flask(__name__)
