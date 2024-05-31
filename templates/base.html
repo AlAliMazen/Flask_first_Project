@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- to link the bootstrap from Flask use the url for with two parameters static and file name-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/clean-blog.min.css') }}">
     <title>Hello World</title>
 </head>
 <body>
 <!-- It is best practice to make the navigation into a central page instead of just replicating it over all other pages.-->
 <!-- the double curely braces is used to for expressions which output something to the screen -->
-    <nav>
+
+<!-- ow it is time to use one of bootstrap themes to update the the general them -->
+    <nav class="navbar">
         <ul>
             <a href="{{ url_for('index') }}">Home</a>
             <a href="{{ url_for('about') }}">About</a>
