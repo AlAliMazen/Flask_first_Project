@@ -17,19 +17,32 @@
         business, welcomed a fourteenth to fill into their party.
     </p>
     {% for member in company %}
-    <div class="row featurette my-5">
-        <div class="col-md-7">
-            <h2>{{ member.name }}</h2>
-            <p>
-                {{ member.description }}
-            </p>
+   
+        <div class="row featurette my-5">
+            {% if loop.index % 2 != 0 %}
+            <div class="col-md-7">
+                <h2>  {{ loop.index }}. {{ member.name }}</h2>
+                <p>
+                    {{ member.description }}
+                </p>
+            </div>
+            <div class="col-md-5">
+                <img src="{{ member.image_source }}" alt=" {{ member.name }} " class="featurette-image image-responsive">
+            </div>
+            {% else %}
+            <div class="col-md-5">
+                <img src="{{ member.image_source }}" alt=" {{ member.name }} " class="featurette-image image-responsive">
+            </div>
+            <div class="col-md-7">
+                <h2>  {{ loop.index }}. {{ member.name }}</h2>
+                <p>
+                    {{ member.description }}
+                </p>
+            </div>
+            {% endif %}
         </div>
-        <div class="col-md-5">
-            <img src="{{ member.image_source }}" alt=" {{ member.name }} " class="featurette-image image-responsive">
-        </div>
-    </div>
-    <hr class="featurette-divider">
+        {% if loop.index != loop.length %}
+            <hr class="featurette-divider">
+        {% endif %}
     {% endfor %}
-    
-    
 {% endblock %}
