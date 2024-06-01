@@ -8,22 +8,23 @@ app=Flask(__name__)
 @app.route("/")
 def index():
     #we can return either the html file ->usual task, and or render the text into HTML
+    # we can give a second parameter to the view function which can be used from the template pages like the title of the page
     return render_template("index.html")
 
 #the def function which is under the decorator is called a view 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return render_template("about.html", page_title="About")
 
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    return render_template("contact.html", page_title="Contact")
 
 
 @app.route("/careers")
 def careers():
-    return render_template("careers.html")
+    return render_template("careers.html", page_title="Careers")
 
 if __name__=="__main__":
     app.run(
