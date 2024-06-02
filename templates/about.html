@@ -21,7 +21,7 @@
         <div class="row featurette my-5">
             {% if loop.index % 2 != 0 %}
             <div class="col-md-7">
-                <h2>  {{ loop.index }}. {{ member.name }}</h2>
+                <h2><a href="/about/{{ member.url }}">  {{ loop.index }}. {{ member.name }}</a></h2>
                 <p>
                     {{ member.description }}
                 </p>
@@ -34,7 +34,7 @@
                 <img src="{{ member.image_source }}" alt=" {{ member.name }} " class="featurette-image image-responsive">
             </div>
             <div class="col-md-7">
-                <h2>  {{ loop.index }}. {{ member.name }}</h2>
+                <h2><a href="/about/{{ member.url }}">  {{ loop.index }}. {{ member.name }}</a></h2>
                 <p>
                     {{ member.description }}
                 </p>

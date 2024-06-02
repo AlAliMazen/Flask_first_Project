@@ -1,7 +1,7 @@
 import os
 import json
-#import Flask class and render_template
-from flask import Flask, render_template
+#import Flask class and render_template and use request class for sending mail
+from flask import Flask, render_template, request
 
 app=Flask(__name__)
 
@@ -23,8 +23,26 @@ def about():
     return render_template("about.html", page_title="About", company=data)
 
 
-@app.route("/contact")
+@app.route("/about/<member_name>")
+def about_member(member_name):
+    member={}
+    with open("data/company.json","r") as json_data:
+        data = json.load(json_data)
+        for obj in data:
+            if obj["url"] == member_name:
+                member=obj
+    
+    return render_template("member.html", character=member)
+
+
+@app.route("/contact", methods=["GET","POST"])
 def contact():
+    if request.method =="POST":
+        print("Hello, anybody there!")
+        #form is a dictionary; that is either use get(Keyname), or square brackets with keys to get value
+        # get is exception safe and return none when key is not there, while square bracket throw an exception 
+        print(request.form.get("name"))
+        #print(request.form["name"])
     return render_template("contact.html", page_title="Contact")
 
 
